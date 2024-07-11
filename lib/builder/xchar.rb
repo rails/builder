@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 # frozen_string_literal: true
 
 # The XChar library is provided courtesy of Sam Ruby (See

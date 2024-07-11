@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 # frozen_string_literal: true
 #--
 # Copyright 2004, 2005 by Jim Weirich (jim@weirichhouse.org).
