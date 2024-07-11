@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 # frozen_string_literal: true
 # encoding: us-ascii
 
@@ -12,7 +11,6 @@
 # above copyright notice is included.
 #++
 
-#!/usr/bin/env ruby
 
 require 'helper'
 require 'builder/xchar'
