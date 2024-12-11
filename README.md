@@ -19,9 +19,6 @@ Builder::XmlEvents:: Generate XML events (i.e. SAX-like)
 ## Usage
 
 ```ruby
-  require 'rubygems'
-  require_gem 'builder', '~> 2.0'
-
   builder = Builder::XmlMarkup.new
   xml = builder.person { |b| b.name("Jim"); b.phone("555-1234") }
   xml #=> <person><name>Jim</name><phone>555-1234</phone></person>
@@ -30,9 +27,6 @@ Builder::XmlEvents:: Generate XML events (i.e. SAX-like)
 or
 
 ```ruby
-  require 'rubygems'
-  require_gem 'builder'
-
   builder = Builder::XmlMarkup.new(:target=>STDOUT, :indent=>2)
   builder.person { |b| b.name("Jim"); b.phone("555-1234") }
   #
@@ -110,15 +104,6 @@ incompatibility are:
 ```ruby
     xml_markup = Builder::XmlMarkup.new
     xml_markup.div { |xml| xml.strong("text") }
-```
-
-* If you have both a pre-1.0 and a post-1.0 gem of builder installed,
-  you can choose which version to use through the RubyGems
-  +require_gem+ facility.
-
-```ruby
-    require_gem 'builder', "~> 0.0"   # Gets the old version
-    require_gem 'builder', "~> 1.0"   # Gets the new version
 ```
 
 ## Features
