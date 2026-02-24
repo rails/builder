@@ -122,6 +122,14 @@ class TestMarkup < Builder::Test
     assert_equal %{<body bg="#ffffff"><title style="red">T</title></body>}, @xml.target!
   end
 
+  def test_object_method_names
+    @xml.class do
+      @xml.methods('x')
+      @xml.object_id('1')
+    end
+    assert_equal %{<class><methods>x</methods><object_id>1</object_id></class>}, @xml.target!
+  end
+
   def test_funky_symbol
     @xml.tag!("non-ruby-token", :id=>1) { |x| x.ok }
     assert_equal %{<non-ruby-token id="1"><ok/></non-ruby-token>}, @xml.target!
