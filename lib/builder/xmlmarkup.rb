@@ -16,9 +16,9 @@ require 'builder/xmlbase'
 
 module Builder
 
-  # Create XML markup easily.  All (well, almost all) methods sent to
-  # an XmlMarkup object will be translated to the equivalent XML
-  # markup.  Any method with a block will be treated as an XML markup
+  # Create XML markup easily. All methods (except BasicObject instance methods)
+  # sent to an XmlMarkup object will be translated to the equivalent XML
+  # markup. Any method with a block will be treated as an XML markup
   # tag with nested markup in the block.
   #
   # Examples will demonstrate this easier than words.  In the
@@ -57,7 +57,7 @@ module Builder
   #
   #     xm.div {                          # <div>
   #       xm.text! "line"; xm.br          #   line<br/>
-  #       xm.text! "another line"; xmbr   #    another line<br/>
+  #       xm.text! "another line"; xm.br  #   another line<br/>
   #     }                                 # </div>
   #
   # * The special XML characters <, >, and & are converted to &lt;,
