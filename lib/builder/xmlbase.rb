@@ -6,8 +6,17 @@ module Builder
   # Generic error for builder
   class IllegalBlockError < RuntimeError; end
 
-  # XmlBase is a base class for building XML builders.  See
+  # XmlBase is a base class for building XML builders. See
   # Builder::XmlMarkup and Builder::XmlEvents for examples.
+  #
+  # Please note, that the XmlBase class inherits from +BasicObject+,
+  # not from the more common +Object+. The advantage is that there are less
+  # instance methods which can conflict with xml element names which
+  # might be used. The disadvantage is that these +Object+ instance
+  # methods might be expected to be present by testing tools
+  # or IRB or other consoles for inspection.
+  # Prominent missing methods are: +class+, +display+, +hash+, +inspect+,
+  # +methods+, +object_id+, +send+ (you can use +__send__+ though).
   class XmlBase < BasicObject
 
     class << self
@@ -16,8 +25,6 @@ module Builder
 
     # Create an XML markup builder.
     #
-    # out      :: Object receiving the markup.  +out+ must respond to
-    #             <tt><<</tt>.
     # indent   :: Number of spaces used for indentation (0 implies no
     #             indentation and no line breaks).
     # initial  :: Level of initial indentation.
@@ -117,12 +124,9 @@ module Builder
       _text(text)
     end
 
-    # For some reason, nil? is sent to the XmlMarkup object.  If nil?
-    # is not defined and method_missing is invoked, some strange kind
-    # of recursion happens.  Since nil? won't ever be an XML tag, it
-    # is pretty safe to define it here. (Note: this is an example of
-    # cargo cult programming,
-    # cf. http://fishbowl.pastiche.org/2004/10/13/cargo_cult_programming).
+    # +nil?+ is an instance method not implemented on the +BasicObject+,
+    # but since +nil?+ won't ever be an XML tag, it is pretty safe to
+    # define it here.
     def nil?
       false
     end
